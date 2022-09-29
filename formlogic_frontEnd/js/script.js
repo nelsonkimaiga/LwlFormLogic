@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     // login logic::
 
     // read the form fields:
@@ -22,15 +23,15 @@ $(document).ready(function () {
 
     // validate login::
     function validateLogin() {
-        if (email.value == "admin@lwalaformlogic.com" && password.value == "password") {
-
+        if (
+            email.value == "admin@lwalaformlogic.com" &&
+            password.value == "password"
+        ) {
             console.log("Logged in as super admin");
 
             // redirect to register CHA webpage:
             location.href = "register_cha.html";
-
-        } else{
-
+        } else {
             // Now make an API call to back-end to validate login:
 
             const formData = new FormData();
@@ -38,30 +39,29 @@ $(document).ready(function () {
             const loginEmail = email.value;
             const loginPassword = password.value;
 
-            formData.append('email', loginEmail);
-            formData.append('password', loginPassword);
+            formData.append("email", loginEmail);
+            formData.append("password", loginPassword);
 
             for (const value of formData.values()) {
                 console.log(value);
             }
 
-            fetch('http://localhost:8080/api/login/', {
-                    method: 'POST',
+            fetch("http://localhost:8080/api/login/", {
+                    method: "POST",
                     body: formData,
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                 })
-                .then(response => response.json())
-                .then(result => {
-                    console.log('Success:', result);
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("Success:", result);
                 })
-                .catch(error => {
-                    console.error('Error:', error);
+                .catch((error) => {
+                    console.error("Error:", error);
                 });
         }
 
     }
-
 
 });
