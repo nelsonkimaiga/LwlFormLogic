@@ -6,7 +6,6 @@ import com.lwala.formlogic.service.RequestService;
 import com.lwala.formlogic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +43,11 @@ public class MainController {
     @PostMapping(path = "/make-request", consumes = ALL_VALUE)
     public ResponseEntity<Request> makeRequest(@Valid @RequestBody Request request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(requestService.addRequest(request));
+    }
+
+    @GetMapping(path = "/fetch-requests", consumes = ALL_VALUE)
+    public ResponseEntity<List<Request>> fetchRequest() {
+        return ResponseEntity.status(HttpStatus.CREATED).body(requestService.fetchRequest());
     }
 
 

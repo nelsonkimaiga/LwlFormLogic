@@ -80,8 +80,7 @@ function makeRequest() {
             supervisingCHA: supervising_cha.value,
             malariaQuantity: malaria_quantity.value,
             familyPlanningQuantity: fp_quantity.value,
-            zincTabletsQuantity: zinc_quantity.value,
-            requestDate: dateToday
+            zincTabletsQuantity: zinc_quantity.value
         };
 
         let requestBody = JSON.stringify(data);
