@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>LWALA:: Make a Request</title>
+
+        <link rel="icon" href="https://lwala.org/wp-content/uploads/2022/01/cropped-lwala_logo-192x192.png"
+            type="image/x-icon" sizes="192x192" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <!-- Google Fonts Roboto -->
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+
+        <link rel="stylesheet" href="css/mdb.min.css" />
+
+        <script type="text/javascript">
+            hsjQuery = window['jQuery']
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- <div class="text-center">
+                <img src="https://lwala.org/wp-content/uploads/2022/03/LWALA_Logo_simple_color-e1647391168575.png"
+                    class="img-fluid" alt="Sample image">
+            </div> -->
+            <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+                <div class="text-center">
+                    <form id="request-form" name="equest-form">
+                        <div class="mb-4">
+                            <label class="form-label" for="form6Example1">Select your local health Facility</label>
+                            <select class="select" name="cha_facility" id="cha_facility">
+                                <option value="" selected disabled>Choose here</option>
+                                <option value="33372136">AFYA CENTRE MIGORI LIMITED</option>
+                                <option value="33373932">ALPHA COMMUNITY AND NURSING HOME</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <p>Supervising CHA</p>
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="supervising_cha"  name="supervising_cha" class="form-control" readonly/>
+                        </div>
+                        <hr>
+                        <p>Enter drug quantity</p>
+                        <div class="row mb-4">
+                            <div class="col">
+                              <div class="form-outline">
+                                <input type="number" id="malaria_quantity" name="malaria_quantity" class="form-control" min="0"/>
+                                <label class="form-label" for="form6Example1">Malaria</label>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-outline">
+                                <input type="number" id="fp_quantity" name="fp_quantity" class="form-control" min="0"/>
+                                <label class="form-label" for="form6Example2">Family Planning</label>
+                              </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                  <input type="number" id="zinc_quantity" name="zinc_quantity" class="form-control" min="0"/>
+                                  <label class="form-label" for="form6Example2">Zinc Tablets</label>
+                                </div>
+                              </div>
+                          </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4" onclick="makeRequest()">Place order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery     -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Custom scripts -->
+        <script type="text/javascript" src="js/request.js"></script>
+    </body>
+
+</html>

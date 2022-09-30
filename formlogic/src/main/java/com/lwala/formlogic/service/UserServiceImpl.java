@@ -5,6 +5,8 @@ import com.lwala.formlogic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -21,6 +23,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User authUser(User user) throws Exception {
         return userRepository.findByUsernameAndPasswordAndUserType(user.getEmail(), user.getPassword(), user.getUserType());
+    }
+
+    @Override
+    public User fetchFacilities(User user) {
+        return userRepository.findAllFacilities(user.getFacility());
     }
 
 

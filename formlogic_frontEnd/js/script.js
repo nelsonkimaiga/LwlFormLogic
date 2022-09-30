@@ -55,9 +55,8 @@ $(document).ready(function () {
                         location.href = "https://google.com";
 
                     } else {
-                        //redirect user to request form::
-                        location.href = "https://google.com";
-
+                        //redirect user to request form -> CHW::
+                        location.href = "request.html";
                     }
 
                 })
@@ -69,3 +68,49 @@ $(document).ready(function () {
     }
 
 });
+
+function makeRequest() {
+
+const addRequestFormElement = document.getElementById("request-form");
+
+  const chafacility = document.getElementById("cha_facility");
+  const supervising_cha = document.getElementById("supervising_cha");
+  const malaria_quantity = document.getElementById("malaria_quantity");
+  const fp_quantity = document.getElementById("fp_quantity");
+  const zinc_quantity = document.getElementById("zinc_quantity");
+
+  addRequestFormElement.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    makeRequest();
+  });
+
+  
+    const data = {
+      healthFacility: chafacility.value,
+      supervisingCHA: supervising_cha.value,
+      malariaQuantity: malaria_quantity.value,
+      familyPlanningQuantity: fp_quantity.value,
+      zincTabletsQuantity: zinc_quantity,
+    };
+
+    let requestBody = JSON.stringify(data);
+    console.log("requestBody", requestBody);
+
+    fetch("https://55bc-102-219-208-30.ngrok.io/lwala/make-request", {
+      method: "POST",
+      body: requestBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Success:", result);
+        alert("Your Request was made Successfully!");
+        document.getElementById("cha-register-form").reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
