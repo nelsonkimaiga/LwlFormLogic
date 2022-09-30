@@ -69,39 +69,61 @@ function makeRequest() {
     console.log(`The sum is ${totalAmount}`);
 
     // validate:
-
-    if (totalAmount > 100) {
-        alert("Total amount of commodities requested exceeds 100");
+    if (chafacility.value == null || chafacility == "") {
+        alert("Facility must be selected");
+        return false;
+    }
+    if (supervising_cha.value == null || cha_email.value == "") {
+        alert("supervisor must be filled out");
+        return false;
+    }
+    if (malaria_quantity.value == null || supervising_cha.value == "") {
+        alert("Malaria quantity must be filled out");
+        return false;
+    }
+    if (fp_quantity.value == null || fp_quantity.value == "") {
+        alert("Family planning quanity must be selected");
+        return false;
+    }
+    if (zinc_quantity.value == null || zinc_quantity.value == "") {
+        alert("Zinc quantity must be selected");
         return false;
     } else {
-        const dateToday = new Date();
-        const data = {
-            healthFacility: chafacility.value,
-            supervisingCHA: supervising_cha.value,
-            malariaQuantity: malaria_quantity.value,
-            familyPlanningQuantity: fp_quantity.value,
-            zincTabletsQuantity: zinc_quantity.value
-        };
 
-        let requestBody = JSON.stringify(data);
-        console.log("requestBody", requestBody);
+        // now validate the total amount
 
-        fetch("https://55bc-102-219-208-30.ngrok.io/lwala/make-request", {
-                method: "POST",
-                body: requestBody,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                mode: "cors",
-            })
-            .then((response) => response.json())
-            .then((result) => {
-                console.log("Success:", result);
-                alert("Your Request was made Successfully!");
-                document.getElementById("request-form").reset();
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        if (totalAmount > 100) {
+            alert("Total amount of commodities requested exceeds 100");
+            return false;
+        } else {
+            const data = {
+                healthFacility: chafacility.value,
+                supervisingCHA: supervising_cha.value,
+                malariaQuantity: malaria_quantity.value,
+                familyPlanningQuantity: fp_quantity.value,
+                zincTabletsQuantity: zinc_quantity.value
+            };
+
+            let requestBody = JSON.stringify(data);
+            console.log("requestBody", requestBody);
+
+            fetch("https://55bc-102-219-208-30.ngrok.io/lwala/make-request", {
+                    method: "POST",
+                    body: requestBody,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    mode: "cors",
+                })
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("Success:", result);
+                    alert("Your Request was made Successfully!");
+                    document.getElementById("request-form").reset();
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
     }
 }

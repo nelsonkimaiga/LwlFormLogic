@@ -13,51 +13,63 @@ $(document).ready(function () {
 
   // validate login::
   function validateLogin() {
+
     // super-admin login:
-    if (
-      email.value == "admin@lwalaformlogic.com" &&
-      password.value == "password"
-    ) {
-      console.log("Logged in as super admin");
-      // redirect to register CHA webpage:
-      location.href = "register_cha.html";
+
+    // form-validation::
+
+    if (email.value == null || email == "") {
+      alert("email must be filled out");
+      return false;
+    }
+    if (password.value == null || password.value == "") {
+      alert("password must be filled out");
+      return false;
     } else {
-      // Now make an API call to back-end to validate login:
 
-      const data = {
-        email: email.value,
-        password: password.value,
-        userType: userType.value,
-      };
+      // carry out super-admin login::
 
-      let requestBody = JSON.stringify(data);
-      console.log("requestBody", requestBody);
+      if (
+        email.value == "admin@lwalaformlogic.com" &&
+        password.value == "password"
+      ) {
+        console.log("Logged in as super admin");
+        // redirect to register CHA webpage:
+        location.href = "register_cha.html";
+      } else {
+        // Now make an API call to back-end to validate login for other users:
 
-      fetch("https://55bc-102-219-208-30.ngrok.io/lwala/login", {
-        method: "POST",
-        body: requestBody,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log("Success:", result);
-          alert("Logged in Successfuly");
+        const data = {
+          email: email.value,
+          password: password.value,
+          userType: userType.value,
+        };
 
-          // check user who is loggin in:
-          if (result.userType == "CHA") {
-            // Redirect to approvals page:
-            location.href = "https://google.com";
-          } else {
-            //redirect user to request form -> CHW::
-            location.href = "request.html";
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+        let requestBody = JSON.stringify(data);
+        console.log("requestBody", requestBody);
+
+        fetch("https://55bc-102-219-208-30.ngrok.io/lwala/login", {
+            method: "POST",
+            body: requestBody,
+            headers: {
+              "Content-Type": "application/json",
+            },
+            mode: "cors",
+          })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("Success:", result);
+            alert("Logged in Successfuly");
+            // check user who is loggin in:
+            if (result.userType == "CHW") {
+              //redirect user to request form -> CHW::
+              location.href = "request.html";
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
     }
   }
 });
@@ -88,13 +100,13 @@ function makeRequest() {
   console.log("requestBody", requestBody);
 
   fetch("https://55bc-102-219-208-30.ngrok.io/lwala/make-request", {
-    method: "POST",
-    body: requestBody,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    mode: "cors",
-  })
+      method: "POST",
+      body: requestBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    })
     .then((response) => response.json())
     .then((result) => {
       console.log("Success:", result);

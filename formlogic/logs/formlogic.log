@@ -443,3 +443,6 @@ java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class 
 2022-09-30 20:55:02.611 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-30 20:55:02.805 [http-nio-8080-exec-1] INFO  o.s.w.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2022-09-30 20:55:02.809 [http-nio-8080-exec-1] INFO  o.s.w.servlet.DispatcherServlet - Completed initialization in 3 ms
+2022-09-30 21:48:07.328 [HikariPool-1 housekeeper] WARN  c.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m51s849ms).
+2022-09-30 21:51:59.671 [HikariPool-1 housekeeper] WARN  c.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m52s555ms).
+2022-09-30 22:08:36.001 [HikariPool-1 housekeeper] WARN  c.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m5s947ms).
