@@ -21,7 +21,14 @@ public class UserController {
 
     @PostMapping(path = "/add-cha", consumes = ALL_VALUE)
     public ResponseEntity<User> addCha(@Valid @RequestBody User user) {
-        System.out.println("User" +user);
-        return ResponseEntity.status(HttpStatus.OK).body(userService.addUser(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(user));
     }
+
+    @PostMapping(path = "/login", consumes = ALL_VALUE)
+    public ResponseEntity<User> loginUser(@Valid @RequestBody User user) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(userService.authUser(user));
+    }
+
+
+
 }

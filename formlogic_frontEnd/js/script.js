@@ -1,61 +1,65 @@
 $(document).ready(function () {
 
-
-    // login logic::
-
     // read the form fields:
     const loginFormElement = document.getElementById("login-form");
     const email = document.getElementById("email");
     const password = document.getElementById("password");
+    const userType = document.getElementById("user-type");
 
     //Add event listener:
-
     loginFormElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
-        fillArray();
         validateLogin();
     });
 
-    // print values to console:
-    function fillArray() {
-        console.log("do something with " + email.value);
-    }
-
     // validate login::
     function validateLogin() {
+        // super-admin login:
         if (
             email.value == "admin@lwalaformlogic.com" &&
             password.value == "password"
         ) {
             console.log("Logged in as super admin");
-
             // redirect to register CHA webpage:
             location.href = "register_cha.html";
+
         } else {
             // Now make an API call to back-end to validate login:
 
-            const formData = new FormData();
+            const data = {
+                email: email.value,
+                password: password.value,
+                userType: userType.value
+            };
 
-            const loginEmail = email.value;
-            const loginPassword = password.value;
+            let requestBody = JSON.stringify(data);
+            console.log('requestBody', requestBody);
 
-            formData.append("email", loginEmail);
-            formData.append("password", loginPassword);
-
-            for (const value of formData.values()) {
-                console.log(value);
-            }
-
-            fetch("http://localhost:8080/api/login/", {
-                    method: "POST",
-                    body: formData,
+            fetch("https://55bc-102-219-208-30.ngrok.io/lwala/login", {
+                    method: 'POST',
+                    body: requestBody,
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    mode: 'cors'
                 })
                 .then((response) => response.json())
                 .then((result) => {
                     console.log("Success:", result);
+                    alert("Logged in Successfuly");
+
+                    // check user who is loggin in:
+                    if (result.userType == "CHA") {
+
+                        // Redirect to approvals page:
+                        location.href = "https://google.com";
+
+                    } else {
+                        //redirect user to request form::
+                        location.href = "https://google.com";
+
+                    }
+
                 })
                 .catch((error) => {
                     console.error("Error:", error);

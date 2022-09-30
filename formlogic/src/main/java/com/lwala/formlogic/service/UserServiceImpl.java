@@ -11,8 +11,17 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
 
+
+
     @Override
     public User addUser(User user) {
         return userRepository.save(user);
     }
+
+    @Override
+    public User authUser(User user) throws Exception {
+        return userRepository.findByUsernameAndPasswordAndUserType(user.getEmail(), user.getPassword(), user.getUserType());
+    }
+
+
 }

@@ -11,16 +11,9 @@ $(document).ready(function () {
     //Add event listener:
     registerChaFormElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
-        fillArray();
         validateChaRegistration();
     });
 
-    // print values to console:
-    function fillArray() {
-        console.log("do something with " + cha_email.value);
-    }
-
-    // validate login::
     function validateChaRegistration() {
 
         //some form validation
