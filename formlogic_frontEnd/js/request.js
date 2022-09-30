@@ -74,12 +74,14 @@ function makeRequest() {
         alert("Total amount of commodities requested exceeds 100");
         return false;
     } else {
+        const dateToday = new Date();
         const data = {
             healthFacility: chafacility.value,
             supervisingCHA: supervising_cha.value,
             malariaQuantity: malaria_quantity.value,
             familyPlanningQuantity: fp_quantity.value,
             zincTabletsQuantity: zinc_quantity.value,
+            requestDate: dateToday
         };
 
         let requestBody = JSON.stringify(data);
