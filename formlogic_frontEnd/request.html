@@ -24,13 +24,9 @@
 
     <body>
         <div class="container">
-            <!-- <div class="text-center">
-                <img src="https://lwala.org/wp-content/uploads/2022/03/LWALA_Logo_simple_color-e1647391168575.png"
-                    class="img-fluid" alt="Sample image">
-            </div> -->
             <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
                 <div class="text-center">
-                    <form id="request-form" name="equest-form">
+                    <form id="request-form" name="equest-form" form autocomplete="off">
                         <div class="mb-4">
                             <label class="form-label" for="form6Example1">Select your local health Facility</label>
                             <select class="select" name="cha_facility" id="cha_facility">
@@ -43,33 +39,38 @@
                         <p>Supervising CHA</p>
                         <!-- Text input -->
                         <div class="form-outline mb-4">
-                            <input type="text" id="supervising_cha"  name="supervising_cha" class="form-control" readonly/>
+                            <input type="text" id="supervising_cha" name="supervising_cha" class="form-control"
+                                readonly />
                         </div>
                         <hr>
                         <p>Enter drug quantity</p>
                         <div class="row mb-4">
                             <div class="col">
-                              <div class="form-outline">
-                                <input type="number" id="malaria_quantity" name="malaria_quantity" class="form-control" min="0"/>
-                                <label class="form-label" for="form6Example1">Malaria</label>
-                              </div>
-                            </div>
-                            <div class="col">
-                              <div class="form-outline">
-                                <input type="number" id="fp_quantity" name="fp_quantity" class="form-control" min="0"/>
-                                <label class="form-label" for="form6Example2">Family Planning</label>
-                              </div>
+                                <div class="form-outline">
+                                    <input type="number" id="malaria_quantity" name="malaria_quantity"
+                                        class="form-control" min="0" />
+                                    <label class="form-label" for="form6Example1">Malaria</label>
+                                </div>
                             </div>
                             <div class="col">
                                 <div class="form-outline">
-                                  <input type="number" id="zinc_quantity" name="zinc_quantity" class="form-control" min="0"/>
-                                  <label class="form-label" for="form6Example2">Zinc Tablets</label>
+                                    <input type="number" id="fp_quantity" name="fp_quantity" class="form-control"
+                                        min="0" />
+                                    <label class="form-label" for="form6Example2">Family Planning</label>
                                 </div>
-                              </div>
-                          </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="number" id="zinc_quantity" name="zinc_quantity" class="form-control"
+                                        min="0" />
+                                    <label class="form-label" for="form6Example2">Zinc Tablets</label>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4" onclick="makeRequest()">Place order</button>
+                        <button type="submit" class="btn btn-primary btn-block mb-4" onclick="makeRequest()">Place
+                            order</button>
                     </form>
                 </div>
             </div>
