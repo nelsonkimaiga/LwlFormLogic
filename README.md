@@ -48,9 +48,11 @@ b. Gradle
 
 c. MySQL 5.7
 
-d. Once cloned, go to the root of the directory named **formlogic** andrun **./gradlew build**
+d. Locate https://github.com/nelsonkimaiga/LwlFormLogic/blob/main/formlogic/src/main/resources/application.yml and edit the datascource username and put your Mysql password
 
-e. Backend service should run successfully.
+e. Once cloned, go to the root of the directory named **formlogic** andrun **./gradlew build**
+
+f. Backend service should run successfully.
 
 2. To run the front-end client:
 
